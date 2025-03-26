@@ -15,13 +15,11 @@ function fetchProductsThen() {
     .catch(error => console.error(error)); // catch the thrown error if necessary
 }; 
 
-fetchProductsThen(); 
-
 // Task 3: Fetch products with async/ wait 
 
 async function fetchProductsAsync() {
     try {
-        const response = await fetch (`https://www.course-api.com/javascript-store-product`)
+        const response = await fetch (`https://www.course-api.com/javascript-store-products`)
 
         if(!response.ok){
             throw new Error("Response was not ok");
@@ -61,4 +59,6 @@ function handleError(foundError) {
     console.error(`An error occurred: ${foundError.message}`) 
 }
 
+// Task 6:
+fetchProductsThen(); 
 fetchProductsAsync();
