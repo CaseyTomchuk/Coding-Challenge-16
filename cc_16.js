@@ -21,7 +21,7 @@ fetchProductsThen();
 
 async function fetchProductsAsync() {
     try {
-        const response = await fetch (`https://www.course-api.com/javascript-store-products`)
+        const response = await fetch (`https://www.course-api.com/javascript-store-product`)
 
         if(!response.ok){
             throw new Error("Response was not ok");
@@ -32,9 +32,9 @@ async function fetchProductsAsync() {
     //For the first 5 items, we are running displayProducts and taking name, price, and image as a parameter
         data.slice(0,5).forEach(item => displayProducts(item.fields.name, item.fields.price, item.fields.image));
     }
-
-    catch {
-        handleError(error) // this will change on the next commit
+// Catching the thrown error by passing it to handleError
+    catch (error) {
+        handleError(error)
     }
 }
 
@@ -54,8 +54,11 @@ function displayProducts(products, price, image) {
     productContainer.appendChild(productImage);
 }
 
-function handleError(error) {
-// console.error(error) (maybe??)
+// Task 5:
+
+// handleError will log "An error occured:" followed by the error message passed to it.
+function handleError(foundError) {
+    console.error(`An error occurred: ${foundError.message}`) 
 }
 
 fetchProductsAsync();
